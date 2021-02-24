@@ -1,0 +1,98 @@
+<!doctype html>
+<link rel=stylesheet type=text/css href="{{ url_for('static',filename='style_flask_framework2.css')}}">
+
+<html lang="en">
+  <head>
+
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js" integrity="sha384-T2yuo9Oe71Cz/I4X9Ac5+gpEa5a8PpJCDlqKYO0CfAuEszu1JrXLl8YugMqYe3sM" 
+    crossorigin="anonymous">
+    </script>
+
+  </head>
+  <body>
+    <title>Stock Prices</title>
+
+    <div class = "row">
+      <div class="topnav">
+        <h2><a>Event Study App</a>
+        <a class="active" href="/">Home</a>
+        <a href="https://github.com/thedataincubator/flask-framework.git">GitHub</a>
+        <a href="http://www.business.unr.edu/faculty/liuc/files/BADM742/MacKinlay_1997.pdf">Reference</a></h2>
+      </div> 
+     </div>
+        
+      
+
+
+      
+
+
+
+    <div class="column">
+            
+
+      <form id='stocks_form' method='GET' action='get_stock_data' > <!-- action is the URL you want to move to next-->
+        <p> 
+        <br><br><br>Stock Symbol: <input type='text' name='stock_symbol' value={{stock_symbol}} size='5'/>
+        </p>
+        <p>
+        Benchmark Symbol: <input type='text' name='benchmark_symbol' value={{benchmark_symbol}} size='5'/>
+        </p>
+        <p>
+        Event Date: <input type='text' name='event_date' value={{event_date}} />
+        </p>
+        <p>
+
+        Event_Window: ( <input type='text' name='event_window_before' value={{event_window_before}} size='4'/>,
+                        <input type='text' name='event_window_after' value={{event_window_after}} size='4'/>)
+        <p>
+        </p>
+        Estimation_Period: <input type='text' name='estimation_period' value={{estimation_period}} size=5/>
+        <p></p>
+<!--         Model: <input type='text' name='model' value={{model}} size=5/> -->
+        <p>
+        Model: <select name="model" id="model" value = {{model}}>
+          {% if model == "mkt" %}
+            <option value="mkt" selected>Market</option>
+            <option value="mean">Mean</option>
+          {% else %}
+            <option value="mkt">Market</option>
+            <option value="mean" selected>Mean</option>
+          {% endif %}
+        </select>
+          </p>
+          <p>
+        <input type='submit' value='Submit' /> <!-- value is the text that will appear on the button. -->
+        </p>
+      </form>
+    </div>   
+    <div class='column2'>
+        {{ divp | safe }}
+        {{ scriptp | safe }}
+        <br><br>
+<!--         {{ div1 | safe }}
+        {{ script1 | safe }} -->
+        <br><br>
+        {{ div | safe }}
+        {{ script | safe }}
+        <p>
+        The shaded area shows values within 1.65 standard deviations from the mean.  We can reject the null hypothesis with 90% confidence if cumulative abnormal returns fall below the shaded area.
+        </p>
+    </div>   
+    <div class='column3'>
+<!--         {{ div2 | safe }}
+        {{ script2 | safe }} -->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
+        <p>
+        Notes: Indicates abnormal returns at differnt confidence levels: *90%,**95% or *** 99%
+        </p>
+    </div>
+
+
+
+  </body>
+</html>
