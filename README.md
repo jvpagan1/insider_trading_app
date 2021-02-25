@@ -1,6 +1,6 @@
-# event_study_app
+# [event_study_app](http://jpagan-event-study-app.herokuapp.com/)
 
-The app is a tool for identifying insider trading in the stock market using the event study 
+This app is a tool for identifying insider trading in the stock market using the event study 
 methodology introduced by Eugene Fama in 1969, as further developed by Craig Mackinlay in 1997.
 Certain tables and charts were inspired by the work of Jean-Baptiste Lemaire on his API for
 event study analysis.  See references below.

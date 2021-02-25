@@ -375,11 +375,14 @@ def get_stock_data():
                 justify='right', border=0,index_names=True, header=True)])
 
 
+@app.route('/references')
+def references():
+    return render_template('references.html')
 
-@app.route('/back_to_index', methods=['POST'])
-def back_to_index():
-    return redirect('/')
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='127.0.0.1', port=port)
+    app.run(host='127.0.0.1', port=port, debug=True)
