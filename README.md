@@ -42,57 +42,59 @@ The app is written in Python, Flask and Bokeh.
 
 ## Identification of the Event and its Date
 
-Type of Event 
-- Vulnerability disclosure made public.
-Date of the Event t=0
-- Date in which the news about the vulnerability disclosure is published.
+#### Type of Event 
+- Disclosure made public.
+
+#### Date of the Event t=0
+- Date in which the news about the disclosure is published.
 - The event window expanded to 5 days before and 20 days after the event date to examine periods surrounding the event.
-Selection of Sample
+
+#### Selection of Sample
 - Must be representative.
 - Daily Adjusted Closing Stock Prices (Yahoo Finance).
 - Compute daily actual returns as the percentage change of daily stock prices.
 
 ## Modelling the Return Generating Process
 
-Abnormal Returns
+#### Abnormal Returns
 	ARt = Rt – E(Rt|Xt) 
 where ARt , Rt and E(Rt|Xt) are the abnormal, actual, and normal returns respectively for time period t.  Xt is the conditioning information for the normal return model.
 
-Measure Normal Returns: expected returns if no event happened
+#### Measure Normal Returns: expected returns if no event happened
 - Constant Mean Model where Xt is constant
 - Using the Market Model where Xt includes the market return
 - Control portfolio: Xt is the return on a portfolio of similar firms
 
-The Estimation Window
+#### The Estimation Window
 - Period prior to the event window, 150 days.
 
 ## Testing the Hypothesis
 
-H0 – the null hypothesis
+#### H0 – the null hypothesis
 - The null hypothesis is that the abnormal returns are not significantly different from zero.
 
-Estimate the benchmark model during the estimation period using linear regression
+#### Estimate the benchmark model during the estimation period using linear regression
 	𝑅𝑡=⍺+𝛽𝑅𝑚𝑡+ et	 where	E(et) = 0  and   e  ~  N ( 0, σ2e )
 Where Rt and 𝑅𝑚𝑡 are  the period-t returns on the security and the market portfolio, respectively, and et is the time period t disturbance term for the security with and expectation of zero and variance sigma squared (σ2e).
 
-Calculate the abnormal returns during the event period using the linear regression coefficients
+#### Calculate the abnormal returns during the event period using the linear regression coefficients
 	 𝐴𝑅𝑡=𝑅𝑡− ⍺ −𝛽𝑅𝑚𝑡	 ~  N ( 0, var(𝐴𝑅𝑡))
 
-Calculate cumulative abnormal returns over time
+#### Calculate cumulative abnormal returns over time
 	CAR [t-t1:t+t2] = ∑t=t-t1:t+t2 ARt
 
 ## Analyzing Abnormal Returns
 
-Null Hypothesis
+#### Null Hypothesis
 - The abnormal returns are not significantly different from zero and the event has no impact on the firm’s value.
 
-T-statistic 
+#### T-statistic 
 - The T-statistic is used to accept or reject the null hypothesis. 
 - Assumes data points are independent and follow a normal distribution.
 - Use one tailed test to test whether the abnormal return is significantly less than zero. Positive deviations from zero are not considered.
 - The test is carried out with a 90% confidence level and a significance level of 0.10 with n-1 degrees of freedom, where n is the number of days in the estimation window. 
 
-p-value 
+#### p-value 
 - Measures the probability that the t-statistic will produce values at least as extreme as the t-score produced form the sample. 
 
 The null hypothesis is rejected if the p-value is less than 0.10. 
