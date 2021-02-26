@@ -1,4 +1,4 @@
-# Event Study App
+# Insider Trading App
 
 This [app](http://jpagan-event-study-app.herokuapp.com/) is a tool for identifying insider trading in the stock market using the event study 
 methodology introduced by Eugene Fama in 1969, as further developed by Craig Mackinlay in 1997.
@@ -21,7 +21,7 @@ and cumulative abnormal returns (line chart) during the event period.  Cumulativ
 returns prior to the event date that are outside the shaded area in the chart are indicative of 
 potential insider trading.
 
-The event study table provides provides t-statistics and p-values for the abnormal returns during
+The event study table provides t-statistics and p-values for the abnormal returns during
 the event window.  Cumulative abnormal returns with p-values under 10% prior to the event date are
 indicative of potential insider trading.  The level of confidence that a cummulative return is
 abnormal is indicated by one, two or three asterisks for 90%, 95% and 99% confidence, respectively.
